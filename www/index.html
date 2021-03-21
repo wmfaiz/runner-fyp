@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <!-- <meta http-equiv="Content-Security-Policy" 
+        content="default-src 'self' 
+                https://ssl.gstatic.com/ 
+                https://maps.googleapis.com/ 
+                https://maps.gstatic.com/ 
+                https://mts0.googleapis.com/ 
+                https://maps.google.com/maps/api/js 
+                https://www.googletagmanager.com/gtag/js 'unsafe-inline' 'unsafe-eval'"> -->
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <!-- <meta http-equiv="Content-Security-Policy"
+        content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+    <!-- <meta http-equiv="Content-Security-Policy" 
+        content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *; img-src * " /> -->
+    <!-- Good default declaration:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+        * Enable inline JS: add 'unsafe-inline' to default-src
+        * Enable eval(): add 'unsafe-eval' to default-src
+    * Create your own at http://cspisawesome.com
+    -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+
+    <script type="text/javascript" src="js/runnerReq.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="css/font.css"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/pageReady.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+    <!-- <script type="text/javascript" src="https://runner-umt.000webhostapp.com/HostingQuery.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <title>Runner</title>
+</head>
+
+    <body>
+        <div class="app">
+            <div class="SplashScreen">
+                <div class="AppTitle">
+                    <h2>Welcome to</h2>
+                    <h1>Runner</h1>
+                    <hr><br>
+                    <h2 id="AppQuote">We provide solution</h2>
+                </div>
+            </div>
+            <div id="loading">0%</div>
+            <!-- <h1>PhoneGap</h1> -->
+            <div id="deviceready">
+                <!-- <p class="event listening">Connecting to Device</p>
+                <p class="event received">Device is Ready</p> -->
+                <!-- <div class="runnerAbout">
+                    <div class="about">
+                        <h1>ABOUT</h1>
+                    </div>                
+                </div> -->
+                <div class="mainContent">
+                    <div class="styling">
+                        <div class="war_scar_1"></div>
+                        <div class="inv_1"></div>
+                        <div class="war_scar_2"></div>
+                        <div class="inv_2"></div>
+                        <div class="inv_3"></div>
+                        <div class="eyebrow"></div>
+                        <div class="whiteeye"></div>
+                        <div class="eyeshadow"></div>
+                        <div class="outtereye"></div>
+                        <div class="innereye"></div>
+                        <div class="eyereflection"></div>
+                    </div>
+                    <div class="forShow">
+                        <div class="quote">
+                            <button id="UnyieldingSpirit" class="red"></button>
+                            <h1>WELCOME TO RUNNER</h1>
+                            <h2 id="misi">WE HAVE THE SOLUTION<p>FOR YOUR PROBLEM</p></h2>
+                            <button id="moveToJob"><h4>START NOW!</h4></button>
+                        </div>
+                    </div>
+                    <div class="body" id="body"></div>
+                    <!-- <button onclick="getCurrentLocation()">GetLocation</button> -->
+                    <div class="mapTools" hidden>
+                        <input type="hidden" id="mapTools_owner">
+                        <input type="hidden" id="mapTools_jobId">
+                        <input type="hidden" id="map_location">
+                        <h3 id="map_currTime">Current Time</h3>
+                        <p id="map_lat">0</p>
+                        <p id="map_lng">0</p>
+                        <h4 id="map_start_title">Start</h4>
+                        <p id="map_start">Start</p>
+                        <h4 id="map_end_title">End</h4>
+                        <p id="map_end">End</p>
+                        <div id="map"></div>
+                        <table>
+                            <tr>
+                                <td><input type="button" id="mapRefresh" value="Refresh"></td>
+                            </tr>
+                            <tr>
+                                <td id="mapTools_loc"><h3>Location:</h3> <p><textarea name="" id="map_loc" readonly></textarea></p></td>
+                            </tr>
+                            <tr>
+                                <td id="mapTools_remarks"><h3>Remarks:</h3> <p><textarea name="" id="map_remarks" readonly></textarea></p></td>
+                            </tr>
+                        </table>
+                        <input type="button" class="mapClose" value="Give Up">
+                        <input type="button" class="mapArrive" value="Arrived">
+                        <button class='job_card_chat' id='job_card_chat'>Message
+                            <!-- <img src='img/conversation.png' width='30' height='30'> -->
+                        </button>
+                        <!-- <input type="button" class="mapClose" value="Give Up"> -->
+                        <!-- <img class="mapClose" src="img/close.png" alt="No Image" height="20px" width="20px"> -->
+                    </div>
+                    <div class="Messanger" hidden>
+                        <h2 style="text-align: center;margin-top: 10px;" id="toMessage">
+                            Receiver
+                        </h2>
+                        <img src="img/close.png" id="closeMessage" alt="send" width="20" height="20">
+                        <input type="hidden" id="msg_receiver">
+                        <input type="hidden" id="msg_sender">
+                        <input type="hidden" id="msg_session">
+                        <table id="messagePopulate">
+                            <tbody>
+                            </tbody>
+                        </table>
+                        <textarea id="YourMessageHere"></textarea>
+                        <img src="img/paper-plane.png" id="sendMessage" alt="send" width="50" height="50">
+                    </div>
+                    <div class="popup">
+                        <input type="hidden" id="popup_jobID">
+                        <img src="img/postman.png" alt="Delivered" width="200" height="200"  id="item_arrived">
+                        <img src="img/box.png" alt="Delivered" width="200" height="200" id="item_delivered">
+                        <h2 id="popup_info">Slide to confirm</h2>
+                        <input type="range" min="1" max="100" value="0" id="popup_delivered">
+                        <h1 id="popup_d">Delivered<p>Thank You!</p></h1>
+                    </div>
+                    <div class="header">
+                        <div class="upperheader">
+                            <h1 class="title">Runner</h1>
+                            <img class="settingLogo" src="img/list.png" alt="No Image">
+                            <button id="toMessenger">
+                                <img class="notification"  src="img/interface.png" alt="No Image" height="25px" width="25px">
+                            </button>
+                            <button id="joblist">
+                                <img src="img/job.png" alt="No Image" height="30px" width="30px">
+                            </button>
+                            <!-- <img class="statusLogo" id="signin-image" src="img/sign-in.png" alt="No Image"> -->
+                            <!-- <img class="statusLogo" id="signout-image" src="img/sign-out.png" alt="No Image"> -->
+                            <div class="blank" id="blank"></div>
+                            <div class="runnercoin">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th><h1>Runner Coin</h1></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <h4>Select your bank:</h4>
+                                                <select id="bankType">
+                                                    <option value="https://www.maybank2u.com.my/home/m2u/common/login.do">Maybank</option>
+                                                    <option value="https://www.cimbclicks.com.my/">CIMB Bank</option>
+                                                    <option value="https://www.pbebank.com/">Public Bank Berhad</option>
+                                                    <option value="https://www.rhbgroup.com/index.html">RHB Bank</option>
+                                                    <option value="https://www.hlb.com.my/en/personal-banking/home.html">Hong Leong Bank</option>
+                                                    <option value="https://www.ambankgroup.com/eng/Pages/home.aspx">AmBank Group</option>
+                                                    <option value="https://www.irakyat.com.my/">Bank Rakyat</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="button" id="coinTopUp" value="Get Runner Coin"><br><br><br></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="button" id="cancelConfirmButton" value="Cancel"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="searchBar">
+                                <input type="text" id="searchInput" placeholder="Search job types"><input type="button" id="searchButton" value="Search">
+                                <table>
+                                    <tr>
+                                        <td><input type="button" id="searchMyJob" value="My Job"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="clearSearch">
+                                <input type="button" id="searchClearButton" value="Clear Search">
+                            </div>
+                            <div class="aboutMe">
+                                <div id="black"></div>
+                                <div id="white"></div>
+                                <h2 id="devTitle">RUNNER SERVICE  MOBILE APPLICATION</h2>
+                                <br>
+                                <h2 id="devExpend">Develop By</h2>
+                                <br>
+                                <img src="img/foto 2.jpg" id="aboutImage">
+                                <br><br>
+                                <h2 id="devName">WAN MUHAMMAD FAIZ BIN WAN ABD GHANI</h2>
+                                <br>
+                                <h2 id="devMatrix">S45861</h2>
+                                <br>
+                                <h2 id="devCost">Software Engineering</h2>
+                                <br>
+                                <h2 id="devUMT">
+                                    Faculty of Ocean Engineering Technology and Informatics,
+                                    Universiti Malaysia Terengganu, 21030 Kuala Nerus, Terengganu, Malaysia.
+                                </h2>
+                                <h2 id="devObjective">Final Year Project 2020</h2>
+                                <h2 id="devDescript">Touch anywhere to exit</h2>
+                            </div>
+                            <div class="settingMenu">
+                                <img class="menuClose" src="img/close.png" alt="No Image">
+                                <hr>
+                                <table>
+                                    <tr colspan="2">
+                                        <br><br>
+                                        <img class="profileImage" id="profileImage" src="img/user.png" alt="No Image" height="115px" width="115px">
+                                        <td><h1 class="title-username" id="title-username">User</h1></td>
+                                    </tr>
+                                    <tr></tr>
+                                    <tr colspan="2">
+                                        <td id="walletBackground">
+                                            <!-- <img src="img/dollar-symbol.png" alt="No Image" height="30px" width="30px"> -->
+                                            <h2>RM: <div id="wallet" hidden>100.00</div></h2>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th id="topup" colspan="2"><img class="menuIcon" src="img/business-and-finance.png" alt="No Image" height="25px" width="25px"> Runner Coin</th>
+                                    </tr>
+                                    <!-- <tr>
+                                        <th class="profile_title"><h6>Profile</h6></th>
+                                    </tr> -->
+                                    <tr>
+                                        <th id="profile" colspan="2"><img class="menuIcon" src="img/portfolio.png" alt="No Image" height="25px" width="25px"> Edit Profile</th>
+                                    </tr>
+                                    <!-- <tr>
+                                        <th class="jobs_title"><h6>Jobs</h6></th>
+                                    </tr> -->
+                                    <tr>
+                                        <th id="createjob" colspan="2"><img class="menuIcon" src="img/gear.png" alt="No Image" height="25px" width="25px"> Create Job </th>
+                                    </tr>
+                                    <!-- <tr>
+                                        <th id="joblist" colspan="2"><img class="menuIcon" src="img/job.png" alt="No Image" height="25px" width="25px"> Search Job</th>
+                                    </tr> -->
+                                    <!-- <tr>
+                                        <th class="messages_title"><h6>Messages</h6></th>
+                                    </tr>
+                                    <tr>
+                                        <th id="chat" colspan="2"><img class="menuIcon" src="img/conversation.png" alt="No Image" height="25px" width="25px"> Chat </th>
+                                    </tr> -->
+                                    <tr>
+                                        <th id="statusLine" colspan="2"><p id="about_us"><img class="menuIcon" src="img/question.png" alt="No Image" height="25px" width="25px"> About </p></th>
+                                    </tr>
+                                    <tr>
+                                        <th class="reserve_title"><h6>&copy; Runner 2020</h6></th>
+                                    </tr>
+                                    <tr>
+                                        <th id="statusLine" colspan="2">                
+                                            <p class="statusLogo" id="signin-image"><img class="menuIcon" src="img/login.png" alt="No Image" height="20px" width="20px"> Login </p>
+                                            <p class="statusLogo" id="signout-image"><img class="menuIcon" src="img/logout.png" alt="No Image" height="20px" width="20px"> Logout </p>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th id="statusLine" colspan="2"><p id="exit_app"><img class="menuIcon" src="img/turn-off.png" alt="No Image" height="25px" width="25px"> Exit </p></th>
+                                    </tr>
+                                </table>
+                                <!-- <p id="about">About Developer</p> -->
+                            </div>
+                            <div class="notify">
+                                <img class="notifyClose" src="img/close.png" alt="No Image">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Messenger</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="Profile_Update_Menu" id="Profile_Update_Menu">
+                                <div class="profile">
+                                    <form id="submit_profile_form">
+                                        <table>
+                                            <tr>
+                                                <th colspan="2"><h2 id="profile-title">Profile</h2><br></th>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <label id="profile_label_image">
+                                                        <img class="profileRealImage" id="profileRealImage" src="img/user.png" alt="No Image" height="100px" width="100px">
+                                                        <img class="profileRealImageChange" id="profileRealImageChange" src="img/refresh.png" alt="No Image" height="100px" width="100px">
+                                                        <input type="file" name="profile_image" id="profile_image" accept="image/png, image/jpeg" style="opacity: 0;position: absolute;">
+                                                    </label>
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th><input type="text" name="profile_fullname" id="profile_fullname" placeholder="Full Name"></th>
+                                            </tr>
+                                            <tr>
+                                                <th><input type="text" name="profile_phone" id="profile_phone" maxlength="10" placeholder="Phone Number"></th>
+                                            </tr>
+                                            <tr>
+                                                <th><input type="email" name="profile_email" id="profile_email" placeholder="Email"></th>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <select id="profile_questionType">
+                                                        <option value="1">Your pet name?</option>
+                                                        <option value="2">Your grandfather name?</option>
+                                                        <option value="3">Your favourite food?</option>
+                                                        <option value="4">Your initial?</option>
+                                                        <option value="5">Your Favorite day?</option>
+                                                        <option value="6">Who are you?</option>
+                                                        <option value="7">What are you doing?</option>
+                                                        <option value="8">Where are we?</option>
+                                                        <option value="9">How can I help you?</option>
+                                                        <option value="10">When is my pet birthday?</option>
+                                                    </select>
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th><input type="text" name="profile_answer_input" id="profile_answer_input" placeholder="Answer" required></th>
+                                            </tr>
+                                            <tr>
+                                                <th><input type="password" id="profile_ChangePassword" placeholder="Your new password"></th>
+                                            </tr>
+                                            <tr>
+                                                <th><input type="password" id="profile_ChangeRePassword" placeholder="Confirm your password"></th>
+                                            </tr>
+                                            <tr id="submit_profile_button">
+                                                <th><input type="button" name="SubmitProfileUpdate" id="SubmitProfileUpdate" value="Update" ></th>
+                                                <th><input type="button" name="ButtonProfileCancel" id="ButtonProfileCancel" value="Cancel" ></th>
+                                            </tr>
+                                        </table>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="create_job_menu" id="create_job_menu">
+                                <div class="job_menu">
+                                    <form id="submit_job_form">
+                                        <table>
+                                            <tr>
+                                                <th colspan="2">
+                                                    <h2 id="createjob-title"><br> Create Job</h2>
+                                                    <input type="hidden" id="createJob_owner_phone" value="">
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th> <input type="text" name="" maxlength="14" id="create_job_title" placeholder="Title" required></th>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <!-- <input type="text" name="" id="create_job_desc" placeholder="Description"> -->
+                                                    <textarea name="" id="create_job_desc" placeholder="Remarks" required></textarea>
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th><textarea name="" id="create_job_address" placeholder="Location" required></textarea><img src="img/target.png" id="create_job_retrieve_address" width="50px" height="50px"></th>
+                                            </tr>
+                                            <tr>
+                                                <th><input type="number" name="" id="create_job_price" pattern="^\d*(\.\d{0,2})?$" step=".01" placeholder="Wage(RM)" required></th>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <select id="jobtype">
+                                                        <option value="Transportation">Transportation</option>
+                                                        <option value="Delivery">Delivery</option>
+                                                        <option value="Food">Food</option>
+                                                        <option value="Cleaning">Cleaning</option>
+                                                        <option value="Others">Others</option>
+                                                    </select>
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <div id="create_job_expired_start_main">
+                                                        <input type="text" class="" id="create_job_expired_start" placeholder="Start: DD-MM-YYYY" required">
+                                                        <br><input type="number" class="create_job_start_clock" id="create_job_start_clock" placeholder="HH" min="0" max="12" required"><input type="number" class="create_job_start_clock_min" id="create_job_start_clock_min" placeholder="MM" min="0" max="60" required">
+                                                        <select id="create_job_start_daynight">
+                                                            <option value="PM">PM</option>
+                                                            <option value="AM">AM</option>
+                                                        </select>
+                                                    </div>
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <div id="create_job_expired_end_main">
+                                                        <input type="text" class="" id="create_job_expired_end"  placeholder="End: DD-MM-YYYY" required>
+                                                        <br><input type="number" class="create_job_end_clock" id="create_job_end_clock" placeholder="HH" min="0" max="12" required"><input type="number" class="create_job_end_clock_min" id="create_job_end_clock_min" placeholder="MM" min="0" max="60" required">
+                                                        <select id="create_job_end_daynight">
+                                                            <option value="PM">PM</option>
+                                                            <option value="AM">AM</option>
+                                                        </select>
+                                                    </div>
+                                                </th>
+                                            </tr>
+                                            <tr id="submit_createjob_button">
+                                                <th><input type="button" name="submitcreatejob" id="submitcreatejob" value="Create" ></th>
+                                                <th><input type="button" name="cancel_createjob" id="cancel_createjob" value="Cancel" ></th>
+                                            </tr>
+                                        </table>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="update_job_menu" id="update_job_menu">
+                                <div class="job_menu_udpate">
+                                    <form id="submit_updatejob_form">
+                                        <table>
+                                            <tr>
+                                                <th colspan="2"><h2 id="updatejob-title">Update Job</h2></th>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <input type="text" name="" id="update_job_title" placeholder="Title" readonly>
+                                                    <input type="hidden" id="update_job_owner" value="">
+                                                    <input type="hidden" id="update_job_status" value="">
+                                                    <input type="hidden" id="update_job_id" value="">
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <!-- <input type="text" name="" id="create_job_desc" placeholder="Description"> -->
+                                                    <textarea name="" id="update_job_desc"  placeholder="Description"></textarea>
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <h3>
+                                                        <!-- <input type="text" name="" id="update_job_address" placeholder="Location"> -->
+                                                        <textarea name="" id="update_job_address" placeholder="Location" readonly></textarea><img src="img/target.png" id="update_job_retrieve_address" width="50px" height="50px">
+                                                    </h3>
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th><h3><input type="number" name="" id="update_job_price" pattern="^\d*(\.\d{0,2})?$" step=".01" placeholder="Wage(RM)"></h3></th>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <select id="updatejobtype">
+                                                        <option value="">Select Type</option>
+                                                        <option value="Transportation">Transportation</option>
+                                                        <option value="Delivery">Delivery</option>
+                                                        <option value="Food">Food</option>
+                                                        <option value="Cleaning">Cleaning</option>
+                                                        <option value="Others">Others</option>
+                                                    </select>
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th id="update_job_expired_main_start">
+                                                    Start:<input type="text" class="update_job_expired_start" id="update_job_expired_start" placeholder="DD-MM-YYYY - HH:MM PM/AM" required">
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th id="update_job_expired_main_end">
+                                                    End:<input type="text" class="update_job_expired_end" id="update_job_expired_end" placeholder="DD-MM-YYYY - HH:MM PM/AM" required>
+                                                </th>
+                                            </tr>
+                                            <tr id="submit_updatejob_button">
+                                                <th><input type="button" name="submitupdatejob" id="submitupdatejob" value="Update" ></th>
+                                                <th><input type="button" name="cancel_updatejob" id="cancel_updatejob" value="Cancel" ></th>
+                                            </tr>
+                                        </table>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="signupMenu" id="signupMenu">
+                                <form id="submit_signup_form">
+                                    <div class="signup">
+                                        <!-- <img class="signupClose" src="img/close.png" alt="No Image" height="25px" width="25px"> -->
+                                        <table>
+                                            <tr>
+                                                <th colspan="2"><h2 id="singup-title">Sign Up</h2></th>
+                                            </tr>
+                                            <tr>
+                                                <th><input type="text" maxlength="15" name="username_input" id="username_input_signup" placeholder="Username" required></th>
+                                            </tr>
+                                            <tr id="username_first_last">
+                                                <th><input type="text" maxlength="50" name="fullname_input" id="fullname_input" placeholder="Full Name" required></th>
+                                                <!-- <th><input type="text" name="firstname_input" id="firstname_input_signup" placeholder="First Name" required></th>
+                                                <th><input type="text" name="lastname_input" id="lastname_input_signup" placeholder="Last Name" required></th> -->
+                                            </tr>
+                                            <tr>
+                                                <th><input type="email" name="email_input" id="email_input_signup" placeholder="Email@gmail.com" required></th>
+                                            </tr>
+                                            <tr>
+                                                <th><input type="tel" pattern="[0-9]{3}-[0-9]{7}" maxlength="11" name="pnumber_input" id="pnumber_input_signup" placeholder="012-3456789" required></th>
+                                            </tr>
+                                            <tr>
+                                                <th><input type="password" name="pword_input" id="pword_input_signup" placeholder="Password" required></th>
+                                            </tr>
+                                            <tr>
+                                                <th><input type="password" name="repword_input" id="repword_input_signup" placeholder="Re-Enter Password" required></th>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <select id="questionType">
+                                                        <option value="1">Your pet name?</option>
+                                                        <option value="2">Your grandfather name?</option>
+                                                        <option value="3">Your favourite food?</option>
+                                                        <option value="4">Your initial?</option>
+                                                        <option value="5">Your Favorite day?</option>
+                                                        <option value="6">Who are you?</option>
+                                                        <option value="7">What are you doing?</option>
+                                                        <option value="8">Where are we?</option>
+                                                        <option value="9">How can I help you?</option>
+                                                        <option value="10">When is my pet birthday?</option>
+                                                    </select>
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th><input type="text" name="question" id="question_input_signup" placeholder="Answer" required></th>
+                                            </tr>
+                                            <tr id="submit_signup_button">
+                                                <th><input type="button" name="submitSignUp" id="submitSignUp" value="Sign Up" ></th>
+                                                <th><input type="button" name="LogInButton" id="LogInButton" value="Log In" ></th>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="loginMenu" id="loginMenu">
+                            <div class="login">
+                                <!-- <img class="signupClose" src="img/close.png" alt="No Image" height="25px" width="25px"> -->
+                                <table>
+                                    <tr>
+                                        <th colspan="2"><h2 id="login-title">Log In</h2></th>
+                                    </tr>
+                                    <tr>
+                                        <th><input type="email" name="username_input" id="username_input_login" placeholder="Email" required></th>
+                                    </tr>
+                                    <tr>
+                                        <th><input type="password" name="pword_input" id="pword_input_login" placeholder="Password" required></th>
+                                    </tr>
+                                    <tr id="submit_login_button">
+                                        <th><input type="button" name="LoginSubmit" id="LoginSubmit" value="Log In"></th>
+                                        <th><input type="button" name="SignUpButton" id="SignUpButton" value="Sign Up"></th>
+                                    </tr>
+                                    <tr>
+                                        <th><input type="button" id="login_forgot_password"  value="Forgot Password"></th>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="Logout_Menu" id="Logout_Menu">
+                            <form id="submit_logout_page">
+                                <table class="logout">
+                                    <tr>
+                                        <th colspan="2"><h2 id="logout-title">Logout</h2></th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <input type="button" name="LoginSubmit" id="LogoutSubmit" value="Logout">
+                                        </th>
+                                        <th>
+                                            <input type="button" name="LoginSubmit" id="LogoutCancel" value="Cancel">
+                                        </th>
+                                    </tr>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                    <footer class="footer">
+                        
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </body>
+    <!-- Cordova Lib -->
+    <script type="text/javascript" src="cordova.js"></script>
+    <!-- Local Firebase API -->
+    <script type="text/javascript" src="js/firebase-app.js"></script>
+    <script type="text/javascript" src="js/firebase-auth.js"></script>
+    <script type="text/javascript" src="js/firebase-database.js"></script>
+    <script type="text/javascript" src="js/firebase-storage.js"></script>
+    <script type="text/javascript" src="js/firebase-analytics.js"></script>
+    <!-- Online Firebase API -->
+    <!-- <script type="text/javascript" src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script> -->
+    <!-- <script type="text/javascript" src="https://www.gstatic.com/firebasejs/7.5.0/firebase-auth.js"></script> -->
+    <!-- <script type="text/javascript" src="https://www.gstatic.com/firebasejs/7.5.0/firebase-database.js"></script> -->
+    <!-- <script type="text/javascript" src="https://www.gstatic.com/firebasejs/7.5.0/firebase-storage.js"></script> -->
+    <!-- <script type="text/javascript" src="https://www.gstatic.com/firebasejs/7.5.0/firebase-analytics.js"></script> -->
+    <!-- My Javascript -->
+    <script type="text/javascript" src="js/pageReady.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/runner_logic.js"></script>
+    <script type="text/javascript" src="js/runner_js.js"></script>
+    <script type="text/javascript" src="js/dateFormat.min.js"></script>
+    <!-- Google Maps -->
+    <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzu7EuKdMhK9rmK-Wsoc37bFYd458AOkQ&callback=GetLocation"async defer></script> -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzu7EuKdMhK9rmK-Wsoc37bFYd458AOkQ"async defer></script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=AIzaSyAZ2O-R3V4wub_Gqj_bSLs7MJWixuyG_CM"></script> -->
+    <!-- Initialize -->
+    <script type="text/javascript">
+        app.initialize();
+    </script>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</html>

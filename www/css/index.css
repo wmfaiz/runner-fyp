@@ -1,0 +1,3072 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+ * {
+    margin:0px;
+    padding: 0px;
+    /* font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif; */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    -webkit-tap-highlight-color:transparent; /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+body {
+    position: absolute;
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    background-color: rgb(245, 246, 250);
+    background-image:linear-gradient(top, rgb(245, 246, 250) 0%, rgb(245, 246, 250), 51%);
+    background-image:-webkit-linear-gradient(top, rgb(245, 246, 250), 0%, rgb(245, 246, 250), 51%);
+    background-image:-ms-linear-gradient(top, rgb(245, 246, 250), 0%, rgb(245, 246, 250), 51%);
+    background-image:-webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        color-stop(0, rgb(245, 246, 250)),
+        color-stop(0.51, rgb(245, 246, 250))
+    );
+    background-attachment:fixed;
+    /* background: url(../img/Street.png) no-repeat; */
+    background-size: 100% 900px;
+    font-size:12px;
+    height:100%;
+    margin:0px;
+    padding:0px;
+    /* text-transform:uppercase; */
+    width:100%;
+}
+
+/* .app {
+    background:url(../img/logo.png) no-repeat center top; 
+    position:absolute;             
+    left:50%;
+    top:50%;
+    height:50px;                  
+    width:225px;                   
+    text-align:center;
+    padding:180px 0px 0px 0px;     
+    margin:-115px 0px 0px -112px;  
+                                   
+}
+
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+    .app {
+        background-position:left center;
+        padding:75px 0px 75px 170px;  
+        margin:-90px 0px 0px -198px;  
+                                      
+    }
+} */
+
+.forShow {
+    background-color: transparent;
+    width: 100%;
+}
+
+.forShow .quote {
+    text-align: center;
+    margin: 50px 5px 0px 5px;
+    padding: 20px 0px 10px 0;
+    border-style: outset;
+    border-radius: 15px;
+}
+
+.forShow .quote h1 {
+    font-size: 30px;
+}
+
+.forShow .quote #misi{
+    margin-top: 520px;
+    font-size: 22px;
+    margin-bottom: 25px;
+}
+
+.forShow .quote #moveToJob {
+    /* margin-top: 0px; */
+    margin-bottom: -10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 100%;
+    padding: 10px;
+    font-size: 17px;
+    background-color: #e84118;
+}
+
+.forShow #UnyieldingSpirit {
+    position: absolute;
+    border-radius: 100%;
+    left: 52%;
+    top: 49%;
+    width: 35px;
+    height: 35px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+.ui-helper-hidden-accessible div {
+    display: none;
+}
+
+#ui-id-1 {
+    font-size: 15px;
+    background-color: #f5f6fa;
+    width: 50%;
+}
+
+#ui-id-1 li {
+    padding: 5px;
+}
+
+.event {
+    border-radius:4px;
+    -webkit-border-radius:4px;
+    color:#101820;
+    font-size:12px;
+    margin:0px 30px;
+    padding:2px 0px;
+}
+
+.event.listening {
+    background-color:#101820;
+    display:block;
+}
+
+.event.received {
+    background-color:#4B946A;
+    display:none;
+}
+
+@keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+ 
+@-webkit-keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+
+.ui-datepicker-calendar,.ui-datepicker-title {
+    background-color: #f5f6fa;
+    padding: 5px;
+    border-radius: 0 0 5px 5px;
+}
+
+.ui-datepicker-title {
+    text-align: center;
+    border-radius: 5px 5px 0 0;
+    border-style: inset ;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+a[title="Prev"] {
+    background-color: #f5f6fa;
+    font-weight: bold;
+    float: left;
+    padding: 5px;
+    border-style: outset;
+    font-size: 15px;
+}
+a[title="Next"]{
+    background-color: #f5f6fa;
+    font-weight: bold;
+    float: right;
+    padding: 5px;
+    border-style: outset;
+    font-size: 15px;
+}
+
+.ui-state-default {
+    text-decoration: none;
+    outline: none;
+    padding: 5px; 
+    color: #dcdde1;
+    font-size: 17px;
+}
+
+a[href="#"]{
+    color: #2f3640;
+}
+ 
+.blink {
+    animation:fade 3000ms infinite;
+    -webkit-animation:fade 3000ms infinite;
+}
+
+.header .upperheader {
+    position: fixed;
+    /* background-color: #f2aa4c; */
+    /* background-color: #101820; */
+    background-color: #f5f6fa;
+    /* background-color: #353b48; */
+    text-align: center;
+    width: 100%;
+    height: 40px;
+    top: 0;
+    box-shadow: 0px 1px 15px 0px #101820;
+}
+
+.header .upperheader .title {
+    position: absolute;
+    color: #101820;
+    overflow:visible;
+    top: 3px;
+    left: 10px;
+    font-size:25px;
+    /* text-align: center; */
+    /* font-family: 'Faster One'; */
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+}
+
+.header .upperheader .title-username {
+    /* position: absolute; */
+    color: #f5f6fa;
+    overflow:visible;
+    width: 200px;
+    font-size:20px;
+    text-align: center;
+}
+
+#walletBackground {
+    float: left;
+    color: #101820;
+    /* background-color: #f2aa4c; */
+    background-color: transparent;
+    padding: 5px 0 5px 5px;
+    /* border-top-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid; */
+}
+
+#walletBackground h2 {
+    margin-top: -30px;
+    color: #f5f6fa;
+}
+
+#wallet {
+    float: right;
+    color: #f5f6fa;
+    margin-left: 10px;
+    /* border-top-style: solid;
+    border-bottom-style: solid;
+    border-right-style: solid; */
+    /* background-color: rgba(0, 0, 0, 0); */
+    width: auto;
+}
+
+.popup {
+    position: fixed;
+    top: 20%;
+    left: 15%;
+    height: 300px;
+    width: 200px;
+    background-color: rgb(245, 246, 250);
+    padding: 50px;
+    border-radius: 5px;
+}
+
+.popup #popup_delivered {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 25px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 80px;
+}
+
+.popup #item_delivered {
+    position: absolute;
+    top: 50px;
+}
+
+.popup #popup_delivered::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #4CAF50;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.popup #popup_delivered::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+.popup #popup_info {
+    position: absolute;
+    bottom: 70px;
+    text-align: center;
+    left: 85px;
+}
+
+.popup #popup_d {
+    position: absolute;
+    bottom: 50px;
+    left: 90px;
+    color: #4CAF50;
+    text-align: center;
+}
+
+.header .upperheader .statusLogo {
+    color: #f5f6fa;
+    overflow: visible;
+    margin: 5px 10px 5px 5px;
+    right: 0;
+    font-weight: bold;
+}
+
+.header .upperheader .settingLogo {
+    position:absolute;
+    height:25px;
+    width:25px;
+    text-align:center;
+    margin: 1px 5px 5px 5px;
+    right: 10px;
+    top: 5px;
+    cursor:pointer;
+}
+
+.settingMenu{
+    position:fixed;
+    /* position: absolute; */
+    /* background-color: #f2aa4c; */
+    background-color: #353b48;
+    width: 250px;
+    /* height: 100%; */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    overflow-y: scroll;
+    /* opacity: 0.8; */
+    box-shadow: 10px 0 20px 0 #101820;
+    z-index: 5;
+}
+
+.settingMenu::-webkit-scrollbar { 
+    display: none;
+}
+
+.settingMenu table th, td {
+    color: #f5f6fa;
+    text-align: left;
+    font-size: 17px;
+}
+
+.settingMenu table {
+    border-spacing: 30px;
+    position: absolute;
+    /* width: 250px; */
+    /* height: 200px; */
+    /* background-color: #f2aa4c; */
+    background-color: transparent;
+    color: #f5f6fa;
+}
+
+.settingMenu hr {
+    border: none;
+    padding: 0.5px;
+    background-color: #101820;
+}
+
+.settingMenu .profileImage {
+    /* text-align:center;
+    padding: 10px; */
+    margin-top: 10px;
+    border-radius: 100%;
+    cursor:pointer;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.settingMenu .menuClose {
+    position: absolute;
+    height:15px;
+    width:15px;
+    top:0;
+    right: 0;
+    cursor:pointer;
+    z-index: 1;
+    padding: 10px;
+    /* background-color: #ffab3c; */
+    background-color: #353b48;
+    padding-left: 100%;
+}
+
+.menuIcon {
+    float: left;
+    margin-top: -7px;
+    padding: 1px;
+    padding-right: 10px;
+}
+
+.notify{
+    position:fixed;
+    /* position: absolute; */
+    /* background-color: #f2aa4c; */
+    background-color: #353b48;
+    width: 250px;
+    /* height: 100%; */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: scroll;
+    /* opacity: 0.9; */
+    box-shadow: -10px 0 20px 0 #101820;
+    z-index: 5;
+}
+
+.notify::-webkit-scrollbar { 
+    display: none;
+}
+
+.notify table th, td {
+    color: #101820;
+    text-align: left;
+    font-size: 17px;
+}
+
+.notify table {
+    border-spacing: 23px;
+    position: absolute;
+    top: -15px;
+    /* width: 250px; */
+    /* height: 200px; */
+    /* background-color: #f2aa4c; */
+    background-color: #353b48;
+    color: #101820;
+}
+
+.notify table thead tr th {
+    text-align: center;
+    color: #f5f6fa;
+    font-size: large;
+    text-transform: uppercase;
+}
+
+.notify hr {
+    border: none;
+    padding: 0.5px;
+    background-color: #101820;
+}
+
+.notify .notifyClose {
+    position: absolute;
+    height:15px;
+    width:15px;
+    top:0;
+    right: 0;
+    cursor:pointer;
+    z-index: 1;
+    padding: 10px;
+    /* background-color: #ffab3c; */
+    background-color: rgba(0,0,0,0);
+    padding-left: 100%;
+}
+
+.profileRealImage, .profileImage {
+    border-radius: 100%;
+}
+
+.profileRealImageChange {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    margin-top: 75px;
+    right: 90px;
+    /* border-style: groove; */
+    /* border-radius: 100%; */
+}
+
+.blank{
+    position: fixed;
+    background-color: rgba(16, 24, 32, 0.8);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 4;
+}
+
+.signupMenu .signupClose {
+    position: fixed;
+    display: block;
+    height:25px;
+    width:25px;
+    padding: 10px;
+    background-color: #f2aa4c;
+    border-radius: 100%;
+    left: 91%;
+    top: 345px;
+    cursor:pointer;
+}
+
+.create_job_menu {
+    position: fixed;
+    left: 26%;
+    margin-left: -50px;
+    background-color: rgb(235, 235, 235);
+    top: 15%;
+    width: 295px;
+    height: 500px;
+    border-radius: 5px;
+    z-index: 5;
+}
+
+.runnercoin{
+    position: fixed;
+    left: 10%;
+    background-color: rgb(235, 235, 235);
+    top: 25%;
+    width: 295px;
+    height: 275px;
+    border-radius: 5px;
+    z-index: 5;
+}
+
+.runnercoin thead tr th h1{
+    text-align: center;
+    padding: 10px;
+    margin-left: 20px;
+}
+
+.runnercoin #cancelConfirmButton, .runnercoin #coinTopUp {
+    padding: 10px;
+    width: 270px;
+}
+
+.runnercoin tr td h4 {
+    margin-left: 10px;
+}
+
+.runnercoin #bankType {
+    width: 270px;
+    margin-left: 10px;
+    border: none;
+    background-color: #101820;
+    color: white;
+    font-size: 15px;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.searchBar {
+    position: absolute;
+    top: 0;
+    background-color: #353b48;
+    padding: 10px;
+    width: 100%;
+    z-index: 5;
+    height: 75px;
+}
+
+.searchBar table input {
+    margin-top: 5px;
+    padding: 5px;
+    width: 80px;
+    border: none;
+    background-color: rgba(251, 197, 49,1.0);
+    color: rgba(53, 59, 72,1.0);
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.searchBar #searchInput {
+    float: left;
+    border-radius: 5px;
+    border: none;
+    font-size: 15px;
+    padding: 10px;
+    width: 70%;
+}
+
+.searchBar #searchButton {
+    float: right;
+    margin-right: 15px;
+    padding: 10px;
+    border: none;
+    background-color: #101820;
+    color: white;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.clearSearch {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.clearSearch #searchClearButton {
+    width: 100%;
+    padding: 10px;
+    font-size: 17px;
+    border: none;
+    background-color: #e84118;
+}
+
+.update_job_menu {
+    position: fixed;
+    left: 27%;
+    margin-left: -50px;
+    background-color: rgb(235, 235, 235);
+    top: 17%;
+    width: 290px;
+    height: 415px;
+    border-radius: 5px;
+    box-shadow: 1px 15px 20px 5px #101820;
+    z-index: 5;
+}
+
+.signupMenu .signup{
+    position: fixed;
+    left: 27%;
+    margin-left: -50px;
+    background-color: rgb(235, 235, 235);
+    top: 17%;
+    width: 290px;
+    height: 415px;
+    border-radius: 5px;
+    box-shadow: 1px 15px 20px 5px #101820;
+    z-index: 5;
+}
+
+.runnerAbout {
+    width: 100%;
+    height: 100vh;
+}
+
+.runnerAbout .about {
+    position: absolute;
+    top: 50px;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 10px;
+    border-style: outset;
+    text-align: center;
+    padding: 10px;
+}
+
+.runnerAbout .about h1 {
+    font-size: 30px;
+    color: rgba(245, 246, 250,1.0);
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.Messanger {
+    position: fixed;
+    left: 17%;
+    margin-left: -50px;
+    background-color: #f5f6fa;
+    top: 4%;
+    width: 370px;
+    height: 655px;
+    border-radius: 5px;
+    box-shadow: 1px 15px 20px 5px #101820;
+    z-index: 20;
+}
+
+.Messanger #messagePopulate {
+    margin: 10px;
+    padding-top: 5px;
+    background-color: #353b48;
+    height: 520px;
+    overflow-y:scroll;
+    display:block;
+    border-radius: 5px;
+}
+
+.Messanger #YourMessageHere {
+    position: absolute;
+    bottom: 5px;
+    width: 77%;
+    left: 10px;
+    border-style: groove;
+    height: 60px;
+    resize: none;
+    font-size: 15px;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #353b48;
+    color: #f5f6fa;
+}
+
+.Messanger #sendMessage {
+    position: absolute;
+    bottom: 15px;
+    right: 10px;
+    transform: rotate(90deg);
+}
+
+.Messanger #closeMessage {
+    position: absolute;
+    /* bottom: 15px; */
+    right: 15px;
+    top: 5px;
+}
+
+.Messanger #messagePopulate #msgSender {
+    float: right;
+    background-color: #4cd137;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+    width: 250px;
+}
+
+.Messanger #messagePopulate #msgReceiver {
+    float: left;
+    background-color: #00a8ff;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+    width: 250px;
+}
+
+#toMessenger {
+    border: none;
+    float: right;
+    margin-right: 65px;
+    margin-top: 8px;
+    background-color: rgba(0,0,0,0);
+    outline: none;
+}
+
+#notify {
+    text-align: center;
+    border: none;
+    position: absolute;
+    background-color: red;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    top: 5px;
+}
+
+#notifyMsg {
+    float: right;
+    background-color: #00a8ff;
+    border-radius: 5px;
+    width: 100%;
+    margin: 15px 0px 0px -20px;
+}
+
+#notifyMsg td h4 {
+    color: #f5f6fa;
+}
+
+#notifyMsg td p {
+    width: 175px;
+    overflow: hidden;
+    color: #f5f6fa;
+}
+
+.signupMenu .signup #questionType {
+    margin-top: 10px;
+    font-size: 17px;
+    background-color: #101820;
+    color: rgb(235, 235, 235);
+    padding: 5px;
+}
+
+#profile_questionType {
+    margin-top: 10px;
+    font-size: 15px;
+    background-color: rgba(16, 24, 32);
+    /* color: #f2aa4c; */
+    color: rgb(235, 235, 235);
+    padding: 5px;
+    border-radius: 3px;
+    width: 230px;
+    border: none;
+}
+
+.loginMenu .login{
+    position: fixed;
+    left: 27%;
+    opacity: 0.9;
+    margin-left: -50px;
+    background-color: rgb(235, 235, 235);
+    top: 17%;
+    width: 290px;
+    height: 500px;
+    border-radius: 5px;
+    box-shadow: 1px 15px 20px 5px #101820;
+    z-index: 5;
+}
+
+.Logout_Menu .logout{
+    position: fixed;
+    left: 26%;
+    margin-left: -50px;
+    /* margin: 0 auto; */
+    background-color: rgb(235, 235, 235);
+    top: 40%;
+    width: 295px;
+    height: 150px;
+    border-radius: 5px;
+    box-shadow: 1px 15px 20px 5px #101820;
+    z-index: 5;
+}
+
+.Profile_Update_Menu {
+    position: fixed;
+    left: 28%;
+    background-color: rgb(235, 235, 235);
+    top: 14%;
+    width: 275px;
+    height: 580px;
+    border-radius: 5px;
+    z-index: 5;
+}
+
+#logout-title {
+    color: #333333;
+}
+
+#home,#joblist,#createjob {
+    cursor: pointer;
+}
+
+#joblist{
+    background-color: transparent;
+    border: none;
+    float: right;
+    margin-top: 5px;
+    margin-right: 25px;
+}
+
+#about {
+    /* position: absolute; */
+    color: #101820;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    font-display: none;
+    font-size: 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#change_profile_password {
+    padding: 10px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.signup table, .login table, .profile table {
+    margin-top: 3px;
+    margin-left: 20px;
+}
+
+.login table{
+    margin-top: 18px;
+}
+
+.logout table{
+    margin-top: 20px;
+}
+
+.profile table {
+    margin-top: 20px;
+}
+
+#topup,#profile, #createjob, #joblist,  #chat, #statusLine{
+    font-size: 15px;
+    color: #f5f6fa;
+}
+
+#logout-title, #singup-title, #login-title, #profile-title, #createjob-title {
+    color: #101820;
+}
+
+.SplashScreen {
+    position: absolute;
+    background-color: #101820;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.SplashScreen .AppTitle {
+    /* text-align: center; */
+    margin-left: 100px;
+    margin-top: 70%;
+    color: rgb(235, 235, 235);
+    font-style: initial;
+}
+
+.SplashScreen .AppTitle h2 {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /* animation: AppTitleAnimateSmall ease-in-out 2s forwards; */
+}
+
+.SplashScreen .AppTitle hr {
+    width: 100%;
+    border: none;
+    background-color: rgb(235, 235, 235);
+    padding: 1px;
+    /* animation: AppTitleAnimateHr ease-in-out 3.5s forwards; */
+}
+
+.SplashScreen .AppTitle h1 {
+    font-size: 50px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-style: italic;
+    /* animation: AppTitleAnimateBig ease-in-out 2s forwards; */
+}
+
+#loading {
+    position: absolute;
+    text-align: center;
+    bottom: 20px;
+    left: 0;
+    right: 30%;
+    z-index: 10;
+    font-size: 25px;
+    width: 100%;
+    color: rgb(235, 235, 235);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* @keyframes LoadingColor {
+    from {color: rgb(235, 235, 235);}
+    to {color: #101820;}
+} */
+
+@keyframes AppTitleAnimateSmall {
+    from {margin-left:0;opacity: 1;}
+    to {margin-left: -100px; opacity: 0;}
+}
+
+@keyframes AppTitleAnimateBig {
+    from {margin-left: 0; opacity: 1;}
+    to {margin-left: 100px;opacity: 0;}
+}
+
+@keyframes AppTitleAnimateHr {
+    from {margin-left: 0; opacity: 1;}
+    to {margin-left: -100px;opacity: 0;}
+}
+
+/* @keyframes AppTitleFadeAway {
+    from{opacity: 1;}
+    to{opacity: 0;}
+} */
+
+.update_job_menu, .create_job_menu, .Profile_Update_Menu {
+    box-shadow: 1px 15px 20px 5px #101820;
+}
+
+.signup table tr th input, .login table tr th input, 
+.logout input, .Profile_Update_Menu input, 
+.create_job_menu input, .update_job_menu input, .runnercoin input {
+    background-color: #101820;
+    border: none;
+    width: 220px;
+    /* color: #f2aa4c; */
+    color: rgb(235, 235, 235);
+    font-size: 15px;
+    margin-top: 5%;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.create_job_menu input {
+    margin-left: 7px;
+    width: 375px;
+    color: rgb(235, 235, 235);
+}
+
+.runnercoin input {
+    width: 260px;
+    margin-left: 10px;
+}
+
+ #create_job_address, #update_job_address {
+    float: left;
+    margin-left: 7px;
+    margin-top: 10px;
+    font-size: 15px;
+    width: 315px;
+    height: 42px;
+    border: none;
+    background-color: #101820;
+    color: rgb(235, 235, 235);
+    border-radius: 3px;
+    padding: 5px;
+ }
+
+ #create_job_retrieve_address, #update_job_retrieve_address{
+    float: right;
+    border: 1px solid rgb(201, 201, 201);
+    margin-top: 10px;
+    border-radius: 3px;
+    border-color: #101820;
+ }
+
+.update_job_menu input {
+    margin-left: 7px;
+    width: 365px;
+    color: rgb(235, 235, 235);
+}
+
+.body {
+    margin-top: 70px;
+    z-index: 0;
+}
+
+.body .job_card{
+    /* background-color: rgb(235, 235, 235); */
+    background-color: #f5f6fa;
+    margin: 15px 10px 15px 10px;
+    padding: 10px 10px 10px 10px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px 3px rgba(16, 24, 32, 0.5);
+    z-index: 0;
+    color: #101820;
+    animation: jobReveal ease-in-out .5s 1;
+}
+
+@keyframes jobReveal {
+    from{opacity: 0;}
+    to{opacity: 1;}
+}
+
+.body .job_card ul li {
+    display: inline-block;
+    border: none;
+    color: #101820;
+    z-index: 0;
+}
+
+.job_child_content {
+    display: none;
+    font-size: 15px;
+    z-index: 0;
+}
+
+.job_card_type, .job_card_address, .job_card_price, .job_card_start, 
+.job_card_end, .job_card_status, .job_card_phone, .job_card_desc {
+    font-size: 15px;
+    margin-top: -18px;
+}
+
+.job_card_desc {
+    border-style: ridge;
+    background-color: rgba(0, 0, 0, 0);
+    width: 100%;
+    height: 70px;
+    color: #101820;
+    /* border-radius: 1px; */
+    outline: none;
+    font-size: 17px;
+    font-weight: bold;
+    overflow:auto;
+    margin-top: 5px;
+}
+
+.job_card_title, #createjob-title, #updatejob-title {
+    text-align: center;
+    font-weight: bold;
+    z-index: 0;
+}
+
+#updatejob-title {
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+.job_card_title{
+    font-size: 17px;
+    text-align: left;
+    /* animation: TitleMoveLeft ease-in-out 0s forwards; */
+    z-index: 0;
+}
+
+.job_flash_details {
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.job_flash_details p h4 {
+    z-index: 0;
+}
+
+.job_flash_details p {
+    padding-top: 3px;
+}
+
+.job_card hr{
+    padding: 1px;
+    border: none;
+    background-color: #101820;
+}
+
+.job_flash_details .job_card_title_type,
+.job_flash_details .job_card_title_price,
+.job_flash_details .job_card_title_loc,
+.job_flash_details .job_card_title_status {
+    position: absolute;
+    margin-left: 140px;
+    margin-top: -17px;
+    width: 45%;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: "----"; 
+    text-overflow: ellipsis; 
+}
+
+.job_child_content div p {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* .job_flash_details .job_card_title_price {
+    position: absolute;
+    margin-left: 140px;
+    margin-top: -20px;
+}
+
+.job_flash_details .job_card_title_loc {
+    position: absolute;
+    margin-left: 140px;
+    margin-top: -20px;
+} */
+
+
+@keyframes TitleMoveCenter {
+    from {margin-left: 0px;}
+    to {margin-left: 40%;}
+}
+
+@keyframes TitleMoveLeft {
+    from {margin-left: 40%;}
+    to {margin-left: 0px;}
+}
+
+@keyframes contentFadeIn {
+    from {opacity: 1;margin-left: 0px;}
+    to {opacity: 0;margin-left: 35%;}
+}
+
+@keyframes contentFadeOut {
+    from {opacity: 0;margin-left: 35%;}
+    to {opacity: 1;margin-left: 0px;}
+}
+
+.job_card_address,.job_card_price,
+.job_card_end,.job_card_start,
+.job_card_type,.job_card_status, .job_card_phone{
+    position: absolute;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    width: auto;
+    color: #101820;
+    border-radius: 1px;
+    outline: none;
+    font-size: 17px;
+    font-weight: bold;
+    z-index: 0;
+    left: 140px;
+}
+
+.job_card_address {
+    width: 55%;
+    height: 13%;
+}
+
+.mapTools {
+    position: fixed;
+    width: 95%;
+    height: 98%;
+    top: 1%;
+    /* left: 20px; */
+    right: 5px;
+    background-color: rgb(235, 235, 235);
+    border-radius: 5px;
+    box-shadow: 1px 15px 20px 5px #101820;
+    z-index: 10;
+}
+
+.mapClose {
+    float: right;
+    padding: 5px;
+}
+
+#map {
+    width: auto;
+    height: 100px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+#job_card_desc_main {
+    margin-top: 5px;
+}
+
+/* .job_child_content ul li {
+    
+} */
+
+#job_card_update,#job_card_delete,#job_card_take,#job_card_chat{
+    border: none;
+    /* background-color: rgba(0,0,0,0); */
+    /* color: rgb(235, 235, 235); */
+    padding: 10px;
+    border-radius: 100%;
+    /* border-bottom-left-radius: 50%; */
+    /* border-bottom-right-radius: 50%; */
+}
+
+#job_card_chat {
+    position: absolute;
+    bottom: 7px;
+    left: 40%;
+    font-size: 15px;
+    border: none;
+    background-color: #1c2d3d;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    width: 80px;
+}
+
+#job_card_update{
+    margin-left: 10px;
+}
+
+/* #update_job_expired_start, #update_job_expired_end, */
+/* #create_job_expired_start, #create_job_expired_end{
+    width: 99px;
+} */
+
+#update_job_expired_start, #update_job_expired_end {
+    width: 200px;
+}
+
+.update_job_menu #update_job_expired_main_start, .update_job_menu #update_job_expired_main_end {
+    float: right;
+}
+
+/* #update_job_start_clock, #update_job_end_clock, */
+#create_job_start_clock, #create_job_end_clock, #create_job_start_clock_min, #create_job_end_clock_min {
+    width: 30px;
+    font-size: 15px;
+    margin-top: 0px;
+}
+
+/* #update_job_start_daynight, #update_job_end_daynight, */
+#create_job_start_daynight, #create_job_end_daynight {
+    width: 55px;
+    background-color: #101820;
+    color: rgb(235, 235, 235);
+    border: none;
+    font-size: 15px;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+/* #create_job_expired_end, #update_job_expired_end {
+    margin-left: 20px;
+} */
+
+#firstname_input_signup, #lastname_input_signup{
+    width: 95px;
+}
+
+#lastname_input_signup {
+    margin-left: 5px;
+}
+
+#submit_signup_button, #submit_login_button, 
+#submit_profile_button, #submit_createjob_button, 
+#submit_updatejob_button {
+    display: block;
+}
+
+#submitSignUp, #LogInButton, #LoginSubmit, #SignUpButton, 
+#SubmitProfileUpdate, #ButtonProfileCancel, #submitcreatejob, 
+#cancel_createjob, #submitupdatejob, #cancel_updatejob{
+    font-size: 15px;
+    margin-top: 20px;
+    width: 100px;
+    padding: 10px;
+    /* float: left; */
+}
+
+#login_forgot_password {
+    font-size: 16px;
+    margin-top: 20px;
+    padding: 5px 10px 5px 10px;
+    width: 100%;
+}
+
+#create_job_desc, #update_job_desc {
+    border:none;
+    font-size: 15px;
+    background-color: #101820;
+    color: rgb(235, 235, 235);
+    margin-left: 7px;
+    /* margin-top: 5px; */
+    width: 100%;
+    border-radius: 6px;
+    padding: 5px;
+}
+
+#create_job_desc {
+    width: 375px;
+    height: 100px;
+}
+
+#update_job_desc {
+    width: 365px;
+    height: 100px;
+}
+
+#submitcreatejob,#cancel_createjob, #submitupdatejob, #cancel_updatejob {
+    margin-top: 20px;
+    margin-left: 30px;
+}
+
+#submitcreatejob, #submitupdatejob {
+    margin-top: 50px;
+    margin-left: 10px;
+}
+
+#cancel_createjob, #cancel_updatejob {
+    float: right;
+    margin-top: 50px;
+    margin-left: 170px;
+}
+
+#jobList, #jobtype, #updatejobList, #updatejobtype {
+    margin-top: 20px;
+}
+
+#updatejobtype {
+    width: auto;
+    margin-left: 15px;
+}
+
+#jobList, #updatejobList{
+    float: left;
+    margin-left: 12px;
+}
+
+#updatejobtype{
+    margin-top: 15px;
+    float: right;
+    width: 185px;
+    height: 30px;
+    margin-right: 10px;
+    border: none;
+    background-color: #101820;
+    color: rgb(235, 235, 235);
+    font-size: 15px;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+#jobtype, #updatejobtype {
+    margin-top: 15px;
+    width: 375px;
+    height: 30px;
+    /* margin-right: 10px; */
+    border: none;
+    background-color: #101820;
+    color: rgb(235, 235, 235);
+    font-size: 15px;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+#LogInButton, #SignUpButton, #ButtonProfileCancel {
+    margin-left: 17px;
+}
+
+#ButtonProfileCancel {
+    margin-left: 25px;
+}
+
+#LoginSubmit, #SignUpButton {
+    float: left;
+}
+
+#LogoutCancel, #LogoutSubmit {
+    display: block;
+    right: 20px;
+    bottom: 14px;
+    width: 110px;
+    margin-left: 20px;
+    padding: 18px 25px;
+}
+
+.styling {
+    position: fixed;
+    top: -35px;
+    right: 125px;
+    z-index: -1;
+}
+
+.war_scar_1 {
+    position: absolute;
+    top: -50px;
+    right: 10px;
+    width: 370px;
+    height: 400px;
+    /* background-color: #f5f6fa; */
+    background-color: rgba(232, 65, 24,1.0);
+    border-bottom-right-radius: 70px;
+    z-index: -3;
+    transform: rotate(20deg);
+}
+
+.inv_1 {
+    position: absolute;
+    top: -120px;
+    right: 150px;
+    background-color: #f5f6fa;
+    width: 350px;
+    height: 600px;
+    border-radius: 100%;
+    transform: rotate(40deg);
+    z-index: -3;
+}
+
+.war_scar_2 {
+    position: absolute;
+    top: 330px;
+    right: -50px;
+    width: 250px;
+    height: 400px;
+    /* background-color: #f5f6fa; */
+    background-color: rgba(232, 65, 24,1.0);
+    z-index: -3;
+    transform: rotate(-30deg);
+}
+
+.inv_2 {
+    position: absolute;
+    top: 200px;
+    right: 90px;
+    background-color: #f5f6fa;
+    width: 300px;
+    height: 700px;
+    border-radius: 100%;
+    transform: rotate(-30deg);
+    z-index: -3;
+}
+
+.inv_3 {
+    position: absolute;
+    top: 550px;
+    right: -160px;
+    background-color: #f5f6fa;
+    width: 200px;
+    height: 500px;
+    border-radius: 100%;
+    transform: rotate(15deg);
+    z-index: -3;
+}
+
+.eyebrow {
+    position: absolute;
+    background-color: #27100c;
+    width: 300px;
+    height: 60px;
+    top: 355px;
+    right: -110px;
+    border-top-right-radius: 90%;
+    border-bottom-left-radius: 50px;
+    transform: rotate(-30deg);
+    z-index: -1;
+}
+
+.whiteeye {
+    position: absolute;
+    background-color: white;
+    width: 170px;
+    height: 70px;
+    top: 395px;
+    right: -40px;
+    border-top-right-radius: 100%;
+    border-top-left-radius: 100%;
+    border-bottom-right-radius: 100%;
+    border-bottom-left-radius: 100%;
+    transform: rotate(-5deg);
+    z-index: -2;
+}
+
+.eyeshadow {
+    position: absolute;
+    background-color: #2f3640;
+    width: 200px;
+    height: 80px;
+    top: 392px;
+    right: -55px;
+    border-top-right-radius: 100%;
+    border-top-left-radius: 100%;
+    border-bottom-right-radius: 100%;
+    border-bottom-left-radius: 100%;
+    transform: rotate(-5deg);
+    z-index: -3;
+}
+
+.outtereye {
+    position: absolute;
+    background-color: rgba(56, 24, 16, 0.99);
+    width: 90px;
+    height: 60px;
+    top: 395px;
+    right: -10px;
+    border-top-right-radius: 100%;
+    border-top-left-radius: 100%;
+    border-bottom-right-radius: 100%;
+    border-bottom-left-radius: 100%;
+    transform: rotate(-5deg);
+    z-index: -2;
+}
+
+.innereye {
+    position: absolute;
+    background-color: black;
+    width: 35px;
+    height: 35px;
+    top: 410px;
+    right: 15px;
+    border-top-right-radius: 100%;
+    border-top-left-radius: 100%;
+    border-bottom-right-radius: 100%;
+    border-bottom-left-radius: 100%;
+    transform: rotate(-5deg);
+    z-index: -2;
+}
+
+.eyereflection {
+    position: absolute;
+    background-color: white;
+    width: 15px;
+    height: 15px;
+    top: 410px;
+    right: 10px;
+    border-radius: 100%;
+    transform: rotate(-5deg);
+    z-index: -2;
+}
+
+.profile_title, .jobs_title, .messages_title, .reserve_title {
+    position: absolute;
+    /* border-style: ridge; */
+    border-top: 1.5px solid #718093;
+    border-bottom: 1.5px solid #718093;
+    background-color: #7f8fa6;
+    width: 190px;
+    margin-top: -15px;
+    left: 0;
+    padding: 1px 50px 1px 10px ;
+}
+
+.profile_title h6, .jobs_title h6, .messages_title h6, .reserve_title h6 {
+    color: white;
+    font-size: 17px;
+}
+
+.mapClose, .mapArrive {
+    position: absolute;
+    margin: 12px 12px 7px 12px;
+    font-size: 15px;
+    border: none;
+    background-color: #1c2d3d;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    width: 80px;
+}
+
+.mapClose {
+    left: 0;
+    bottom: 0;
+}
+
+.mapArrive {
+    right: 0;
+    bottom: 0;
+}
+
+.mapTools table {
+    padding: 10px;
+}
+
+#mapTools_loc,#mapTools_remarks {
+    padding: 1px;
+    font-size: 12px;
+}
+
+#map_loc,#map_remarks {
+    background-color: rgba(0,0,0,0);
+    border: none;
+    resize: none;
+    outline: none;
+    width: 320px;
+    height: 50px;
+}
+
+#map_lat {
+    float: left;
+}
+
+#map_lng {
+    float: right;
+}
+
+#map_remarks {
+    height: 110px;
+}
+
+#map_currTime {
+    position: absolute;
+    top: 7px;
+    left: 22.5%;
+    font-size: 15px;
+}
+
+#map_start{
+    position: absolute;
+    left: 10px;
+    top: 40px;
+    font-size: 13px;
+}
+#map_start_title{
+    position: absolute;
+    left: 10px;
+    top: 20px;
+}
+
+#map_end {
+    position: absolute;
+    right: 10px;
+    top: 40px;
+    font-size: 13px;
+}
+#map_end_title {
+    position: absolute;
+    right: 10px;
+    top: 20px;
+}
+/* #map_canvas {
+    width: 500px;
+    height: 500px;
+} */
+
+.aboutMe{
+    position: fixed;
+    left: 2px;
+    top: 2px;
+    bottom: 2px;
+    right: 2px;
+    border-radius: 10px;
+    z-index: 10;
+}
+
+.aboutMe #aboutImage {
+    border-radius: 100%;
+    width: 200px;
+    height: 250px;
+}
+
+.aboutMe #devMatrix, .aboutMe #devUMT, .aboutMe #devName, .aboutMe #devCost, .aboutMe #devExpend, .aboutMe #devDescript {
+    margin-left: 30px;
+    margin-right: 30px;
+    color: #f5f6fa;
+}
+
+.aboutMe #devDescript{
+    color: #e84118;
+}
+
+.aboutMe #devTitle, .aboutMe #devObjective {
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+    color: #f5f6fa;
+}
+
+.aboutMe #black {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    bottom: 10px;
+    right: 10px;
+    background-color:#282828;
+    border-radius: 10px;
+    z-index: -1;
+}
+
+.aboutMe #white {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    bottom: 5px;
+    right: 5px;
+    background-color: #f5f6fa;
+    border-radius: 10px;
+    z-index: -2;
+}
+
+@media only screen and (max-width:1024px) {     
+    #mapRefresh{
+        position: absolute;
+        right: 0px;
+        top: 840px;
+        padding: 1px 10px 1px 10px;
+        border: none;
+        background-color: #101820;
+        color: white;
+    }
+    
+    .signupMenu .signup{
+        left: 40%;
+        margin-left: -50px;
+        top: 25%;
+        width: 290px;
+        height: 470px;
+    }
+
+    .loginMenu .login {
+        left: 43%;
+        margin-left: -50px;
+        top: 30%;
+        width: 270px;
+        height: 270px;
+    }
+
+    .Logout_Menu .logout{
+        position: fixed;
+        left: 42%;
+        margin-left: -50px;
+        /* margin: 0 auto; */
+        top: 35%;
+    }
+
+    .Profile_Update_Menu {
+        position: fixed;
+        left: 42%;
+        margin-left: -50px;
+        /* margin: 0 auto; */
+        top: 30%;
+    }
+
+    .create_job_menu {
+        left: 35%;
+        top: 30%;
+        width: 403px;
+        height: 500px;
+    }
+    .create_job_menu #create_job_title, .create_job_menu #create_job_desc, .create_job_menu #create_job_price, .create_job_menu #jobtype {
+        float: left;
+        width: 375px;
+        margin-top: 5px;
+    }
+    .create_job_menu #create_job_address {
+        width: 315px;
+        margin-top: 5px;
+    }
+    .create_job_menu #create_job_retrieve_address {
+        float: right;
+        margin-top: 5px;
+    }
+    .create_job_menu #jobtype {
+        margin-left: 7px;
+        width: 385px;
+    }
+    .create_job_menu #create_job_expired_start, .create_job_menu #create_job_expired_end {
+        position: absolute;
+        width: 53%;
+        /* margin-right: 100px; */
+        left: 0;
+        margin-top: 15px;
+        font-size: 15px;
+    }
+    .create_job_menu #submitcreatejob, .create_job_menu #cancel_createjob {
+        position: absolute;
+        bottom: 0;
+        width: 75px;
+        font-size: 15px;
+    }
+    .create_job_menu #submitcreatejob{
+        left: -5px;
+        bottom: 10px;
+    }
+    .create_job_menu #cancel_createjob{
+        right: 10px;
+        bottom: 10px;
+    }
+    #create_job_start_clock, #create_job_end_clock {
+        font-size: 15px;
+        margin-left: 220px;
+    }
+    #create_job_start_daynight, #create_job_end_daynight {
+        font-size: 13px;
+        float: right;
+    }
+    
+    .update_job_menu {
+        left: 38%;
+        margin-left: -50px;
+        top: 30%;
+        width: 403px;
+        height: 450px;
+    }
+    .update_job_menu #updatejob-title {
+        margin-right: 50px;
+    }
+    .update_job_menu #update_job_title, .update_job_menu #update_job_desc, .update_job_menu #update_job_price {
+        float: left;
+        width: 375px;
+        margin-top: 5px;
+    }
+    .update_job_menu #update_job_address {
+        width: 300px;
+        height: 50px;
+        margin-top: 5px;
+        margin-right: 20px;
+    }
+    .create_job_menu #update_job_retrieve_address {
+        float: right;
+        margin-top: 5px;
+    }
+    .update_job_menu #update_job_price {
+        float: right;
+        margin-top: 5px;
+        /* margin-right: 20px; */
+        width: 170px;
+    }
+    .update_job_menu #updatejobtype {
+        position: absolute;
+        left: -5px;
+        margin-top: -30px;
+        /* margin-right: 0px; */
+        width: 200px;
+    }
+    .update_job_menu #update_job_expired_start, .update_job_menu #update_job_expired_end {
+        margin-top: 5px;
+        width: 330px;
+    }
+    .update_job_menu #submitupdatejob, .update_job_menu #cancel_updatejob {
+        margin-top: 25px;
+        margin-left: 20px;
+    }
+    .update_job_menu #cancel_updatejob{
+        margin-left: 155px;
+    }
+    .mapTools {
+        position: fixed;
+        width: 98%;
+        height: 98%;
+        top: 1%;
+        /* left: 20px; */
+        right: 10px;
+        background-color: rgb(235, 235, 235);
+        border-radius: 5px;
+        box-shadow: 1px 15px 20px 5px #101820;
+        z-index: 10;
+    }
+    #map {
+        width: auto;
+        height: 800px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        margin-top: 60px;
+    }
+    .popup {
+        top: 30%;
+        left: 35%;
+        height: 300px;
+        width: 200px;
+    }
+}
+
+@media only screen and (max-width:768px) {   
+    #mapRefresh{
+        position: absolute;
+        right: 0px;
+        top: 540px;
+        padding: 1px 10px 1px 10px;
+        border: none;
+        background-color: #101820;
+        color: white;
+    }
+    
+    .signupMenu .signup{
+        left: 40%;
+        margin-left: -50px;
+        top: 20%;
+        width: 270px;
+        height: 470px;
+    }
+
+    .loginMenu .login {
+        left: 40%;
+        margin-left: -50px;
+        top: 30%;
+        width: 270px;
+        height: 270px;
+    }
+
+    .Logout_Menu .logout{
+        position: fixed;
+        left: 37%;
+        margin-left: -50px;
+        /* margin: 0 auto; */
+        top: 35%;
+    }
+
+    .Profile_Update_Menu {
+        position: fixed;
+        left: 39%;
+        margin-left: -50px;
+        /* margin: 0 auto; */
+        top: 25%;
+    }
+
+    .create_job_menu {
+        left: 30%;
+        margin-left: -50px;
+        top: 25%;
+        width: 403px;
+        height: 500px;
+    }
+    .create_job_menu #create_job_title, .create_job_menu #create_job_desc, .create_job_menu #create_job_price, .create_job_menu #jobtype {
+        float: left;
+        width: 375px;
+        margin-top: 5px;
+    }
+    .create_job_menu #create_job_address {
+        width: 315px;
+        margin-top: 5px;
+    }
+    .create_job_menu #create_job_retrieve_address {
+        float: right;
+        margin-top: 5px;
+    }
+    .create_job_menu #jobtype {
+        margin-left: 7px;
+        width: 385px;
+    }
+    .create_job_menu #create_job_expired_start, .create_job_menu #create_job_expired_end {
+        position: absolute;
+        width: 53%;
+        /* margin-right: 100px; */
+        left: 0;
+        margin-top: 15px;
+        font-size: 15px;
+    }
+    .create_job_menu #submitcreatejob, .create_job_menu #cancel_createjob {
+        position: absolute;
+        bottom: 0;
+        width: 75px;
+        font-size: 15px;
+    }
+    .create_job_menu #submitcreatejob{
+        left: -5px;
+        bottom: 10px;
+    }
+    .create_job_menu #cancel_createjob{
+        right: 10px;
+        bottom: 10px;
+    }
+    #create_job_start_clock, #create_job_end_clock {
+        font-size: 15px;
+        margin-left: 220px;
+    }
+    #create_job_start_daynight, #create_job_end_daynight {
+        font-size: 13px;
+        float: right;
+    }
+    
+    .update_job_menu {
+        left: 33%;
+        margin-left: -50px;
+        top: 20%;
+        width: 403px;
+        height: 450px;
+    }
+    .update_job_menu #updatejob-title {
+        margin-right: 50px;
+    }
+    .update_job_menu #update_job_title, .update_job_menu #update_job_desc, .update_job_menu #update_job_price {
+        float: left;
+        width: 375px;
+        margin-top: 5px;
+    }
+    .update_job_menu #update_job_address {
+        width: 300px;
+        height: 50px;
+        margin-top: 5px;
+        margin-right: 20px;
+    }
+    .create_job_menu #update_job_retrieve_address {
+        float: right;
+        margin-top: 5px;
+    }
+    .update_job_menu #update_job_price {
+        float: right;
+        margin-top: 5px;
+        /* margin-right: 20px; */
+        width: 170px;
+    }
+    .update_job_menu #updatejobtype {
+        position: absolute;
+        left: -5px;
+        margin-top: -30px;
+        /* margin-right: 0px; */
+        width: 200px;
+    }
+    .update_job_menu #update_job_expired_start, .update_job_menu #update_job_expired_end {
+        margin-top: 5px;
+        width: 330px;
+    }
+    .update_job_menu #submitupdatejob, .update_job_menu #cancel_updatejob {
+        margin-top: 25px;
+        margin-left: 20px;
+    }
+    .update_job_menu #cancel_updatejob{
+        margin-left: 155px;
+    }
+    .mapTools {
+        position: fixed;
+        width: 99%;
+        height: 98%;
+        top: 1%;
+        /* left: 20px; */
+        right: 5px;
+        background-color: rgb(235, 235, 235);
+        border-radius: 5px;
+        box-shadow: 1px 15px 20px 5px #101820;
+        z-index: 10;
+    }
+    #map {
+        width: auto;
+        height: 500px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        margin-top: 60px;
+    }
+    .popup {
+        top: 20%;
+        left: 30%;
+        height: 300px;
+        width: 200px;
+    }
+}
+
+@media only screen and (max-width:414px) {   
+    #mapRefresh{
+        position: absolute;
+        right: 0px;
+        top: 340px;
+        padding: 1px 10px 1px 10px;
+        border: none;
+        background-color: #101820;
+        color: white;
+    }
+    
+    .signupMenu .signup{
+        left: 30%;
+        margin-left: -50px;
+        top: 15%;
+        width: 270px;
+        height: 470px;
+    }
+
+    .loginMenu .login {
+        left: 29%;
+        margin-left: -50px;
+        top: 30%;
+        width: 270px;
+        height: 270px;
+    }
+    
+    .Logout_Menu .logout{
+        position: fixed;
+        left: 26%;
+        margin-left: -50px;
+        /* margin: 0 auto; */
+        top: 40%;
+    }
+
+    .Profile_Update_Menu {
+        position: fixed;
+        left: 28%;
+        margin-left: -50px;
+        /* margin: 0 auto; */
+        top: 14%;
+    }
+
+    .create_job_menu {
+        left: 15%;
+        /* margin-left: -50px; */
+        top: 15%;
+        width: 390px;
+        height: 530px;
+    }
+    .create_job_menu #create_job_title, .create_job_menu #create_job_desc, .create_job_menu #create_job_price, .create_job_menu #jobtype {
+        float: left;
+        width: 360px;
+        margin-top: 5px;
+    }
+    .create_job_menu #create_job_address {
+        width: 300px;
+        margin-top: 5px;
+    }
+    .create_job_menu #create_job_retrieve_address {
+        float: right;
+        margin-top: 5px;
+    }
+    .create_job_menu #jobtype {
+        margin-left: 7px;
+        width: 370px;
+    }
+    .create_job_menu #create_job_expired_start, .create_job_menu #create_job_expired_end {
+        position: absolute;
+        width: 53%;
+        left: 0;
+        margin-top: 15px;
+        font-size: 15px;
+    }
+    .create_job_menu #submitcreatejob, .create_job_menu #cancel_createjob {
+        position: absolute;
+        bottom: 0;
+        width: 75px;
+        font-size: 15px;
+    }
+    .create_job_menu #submitcreatejob{
+        left: 0px;
+        width: 150px;
+        bottom: 10px;
+    }
+    .create_job_menu #cancel_createjob{
+        right: 10px;
+        width: 150px;
+        bottom: 10px;
+    }
+    #create_job_start_clock, #create_job_end_clock {
+        font-size: 15px;
+        margin-left: 220px;
+    }
+    #create_job_start_daynight, #create_job_end_daynight {
+        font-size: 13px;
+        float: right;
+    }
+    
+    .update_job_menu {
+        left: 13%;
+        margin-left: -50px;
+        top: 15%;
+        width: 405px;
+        height: 450px;
+    }
+    .update_job_menu #updatejob-title {
+        margin-right: 50px;
+    }
+    .update_job_menu #update_job_title, .update_job_menu #update_job_desc, .update_job_menu #update_job_price {
+        float: left;
+        width: 375px;
+        margin-top: 5px;
+    }
+    .update_job_menu #update_job_address {
+        width: 300px;
+        height: 50px;
+        margin-top: 5px;
+        margin-right: 20px;
+    }
+    .create_job_menu #update_job_retrieve_address {
+        float: right;
+        margin-top: 5px;
+    }
+    .update_job_menu #update_job_price {
+        float: right;
+        margin-top: 5px;
+        /* margin-right: 20px; */
+        width: 170px;
+    }
+    .update_job_menu #updatejobtype {
+        position: absolute;
+        left: -5px;
+        margin-top: -30px;
+        /* margin-right: 0px; */
+        width: 200px;
+    }
+    .update_job_menu #update_job_expired_start, .update_job_menu #update_job_expired_end {
+        margin-top: 5px;
+        width: 330px;
+    }
+    .update_job_menu #submitupdatejob, .update_job_menu #cancel_updatejob {
+        margin-top: 25px;
+        margin-left: 20px;
+    }
+    .update_job_menu #cancel_updatejob{
+        margin-left: 155px;
+    }
+    .mapTools {
+        position: fixed;
+        width: 98%;
+        height: 98%;
+        top: 1%;
+        /* left: 20px; */
+        right: 5px;
+        background-color: rgb(235, 235, 235);
+        border-radius: 5px;
+        box-shadow: 1px 15px 20px 5px #101820;
+        z-index: 10;
+    }
+    #map {
+        width: auto;
+        height: 300px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        margin-top: 60px;
+    }
+    .popup {
+        top: 20%;
+        left: 14%;
+        height: 300px;
+        width: 200px;
+    }
+}
+
+@media only screen and (max-width:411px) {    
+    #mapRefresh{
+        position: absolute;
+        right: 0px;
+        top: 360px;
+        padding: 1px 10px 1px 10px;
+        border: none;
+        background-color: #101820;
+        color: white;
+    }
+
+    .signupMenu .signup{
+        left: 28%;
+        margin-left: -50px;
+        top: 15%;
+        width: 270px;
+        height: 470px;
+    }
+
+    .loginMenu .login {
+        left: 28%;
+        margin-left: -50px;
+        top: 30%;
+        width: 270px;
+        height: 270px;
+    }
+
+    .Logout_Menu .logout{
+        position: fixed;
+        left: 26%;
+        margin-left: -50px;
+        /* margin: 0 auto; */
+        top: 35%;
+    }
+
+    .Profile_Update_Menu {
+        position: fixed;
+        left: 28%;
+        margin-left: -50px;
+        /* margin: 0 auto; */
+        top: 14%;
+    }
+
+    .create_job_menu {
+        left: 15%;
+        /* margin-left: -50px; */
+        top: 15%;
+        width: 390px;
+        height: 530px;
+    }
+    .create_job_menu #create_job_title, .create_job_menu #create_job_desc, .create_job_menu #create_job_price, .create_job_menu #jobtype {
+        float: left;
+        width: 360px;
+        margin-top: 5px;
+    }
+    .create_job_menu #create_job_address {
+        width: 300px;
+        margin-top: 5px;
+    }
+    .create_job_menu #create_job_retrieve_address {
+        float: right;
+        margin-top: 5px;
+    }
+    .create_job_menu #jobtype {
+        margin-left: 7px;
+        width: 370px;
+    }
+    .create_job_menu #create_job_expired_start, .create_job_menu #create_job_expired_end {
+        position: absolute;
+        width: 53%;
+        left: 0;
+        margin-top: 15px;
+        font-size: 15px;
+    }
+    .create_job_menu #submitcreatejob, .create_job_menu #cancel_createjob {
+        position: absolute;
+        bottom: 0;
+        width: 75px;
+        font-size: 15px;
+    }
+    .create_job_menu #submitcreatejob{
+        left: 0px;
+        width: 150px;
+        bottom: 10px;
+    }
+    .create_job_menu #cancel_createjob{
+        right: 10px;
+        width: 150px;
+        bottom: 10px;
+    }
+    #create_job_start_clock, #create_job_end_clock {
+        font-size: 15px;
+        margin-left: 220px;
+    }
+    #create_job_start_daynight, #create_job_end_daynight {
+        font-size: 13px;
+        float: right;
+    }
+    
+    .update_job_menu {
+        left: 13%;
+        /* margin-left: -50px; */
+        top: 15%;
+        width: 98%;
+        height: 450px;
+    }
+    .update_job_menu #updatejob-title {
+        margin-right: 50px;
+    }
+    .update_job_menu #update_job_title, .update_job_menu #update_job_desc, .update_job_menu #update_job_price {
+        float: left;
+        width: 375px;
+        margin-top: 5px;
+    }
+    .update_job_menu #update_job_address {
+        width: 300px;
+        height: 50px;
+        margin-top: 5px;
+        margin-right: 20px;
+    }
+    .create_job_menu #update_job_retrieve_address {
+        float: right;
+        margin-top: 5px;
+    }
+    .update_job_menu #update_job_price {
+        float: right;
+        margin-top: 5px;
+        /* margin-right: 20px; */
+        width: 170px;
+    }
+    .update_job_menu #updatejobtype {
+        position: absolute;
+        left: -5px;
+        margin-top: -30px;
+        /* margin-right: 0px; */
+        width: 200px;
+    }
+    .update_job_menu #update_job_expired_start, .update_job_menu #update_job_expired_end {
+        margin-top: 5px;
+        width: 325px;
+    }
+    .update_job_menu #submitupdatejob, .update_job_menu #cancel_updatejob {
+        margin-top: 25px;
+        margin-left: 20px;
+    }
+    .update_job_menu #cancel_updatejob{
+        margin-left: 155px;
+    }
+    .mapTools {
+        position: fixed;
+        width: 98%;
+        height: 98%;
+        top: 1%;
+        /* left: 20px; */
+        right: 5px;
+        background-color: rgb(235, 235, 235);
+        border-radius: 5px;
+        box-shadow: 1px 15px 20px 5px #101820;
+        z-index: 10;
+    }
+    #map {
+        width: auto;
+        height: 320px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        margin-top: 60px;
+    }
+    .popup {
+        top: 20%;
+        left: 15%;
+        height: 300px;
+        width: 200px;
+    }
+}
+
+@media only screen and (max-width:375px) {       
+    .Messanger {
+        position: fixed;
+        left: 17%;
+        margin-left: -50px;
+        background-color: #f5f6fa;
+        top: 1%;
+        width: 350px;
+        height: 655px;
+        border-radius: 5px;
+        box-shadow: 1px 15px 20px 5px #101820;
+        z-index: 20;
+    }
+    
+    .Messanger #YourMessageHere {
+        position: absolute;
+        bottom: 5px;
+        width: 75%;
+        left: 10px;
+        border-style: groove;
+        height: 60px;
+        resize: none;
+        font-size: 15px;
+        border-radius: 5px;
+        padding: 5px;
+        background-color: #353b48;
+        color: #f5f6fa;
+    }
+
+
+    #mapRefresh{
+        position: absolute;
+        right: 0px;
+        top: 290px;
+        padding: 1px 10px 1px 10px;
+        border: none;
+        background-color: #101820;
+        color: white;
+    }
+    
+    .signupMenu .signup{
+        left: 27%;
+        margin-left: -50px;
+        top: 15%;
+        width: 270px;
+        height: 470px;
+    }
+
+    .loginMenu .login {
+        left: 28%;
+        margin-left: -50px;
+        top: 30%;
+        width: 270px;
+        height: 270px;
+    }
+
+    .Logout_Menu .logout{
+        position: fixed;
+        left: 24%;
+        margin-left: -50px;
+        /* margin: 0 auto; */
+        top: 35%;
+    }
+
+    .Profile_Update_Menu {
+        position: fixed;
+        left: 26%;
+        margin-left: -50px;
+        /* margin: 0 auto; */
+        top: 14%;
+    }
+
+    .create_job_menu {
+        left: 15%;
+        /* margin-left: -50px; */
+        top: 10%;
+        width: 360px;
+    }
+    .create_job_menu #create_job_title, .create_job_menu #create_job_desc, .create_job_menu #create_job_price, .create_job_menu #jobtype {
+        float: left;
+        width: 330px;
+        margin-top: 5px;
+    }
+    .create_job_menu #create_job_address {
+        width: 265px;
+        margin-top: 5px;
+    }
+    .create_job_menu #create_job_retrieve_address {
+        float: right;
+        margin-top: 5px;
+    }
+    .create_job_menu #jobtype {
+        margin-left: 7px;
+        width: 340px;
+    }
+    .create_job_menu #create_job_expired_start, .create_job_menu #create_job_expired_end {
+        position: absolute;
+        width: 48%;
+        left: 0;
+        font-size: 15px;
+    }
+    .create_job_menu #submitcreatejob, .create_job_menu #cancel_createjob {
+        position: absolute;
+        bottom: 0;
+        width: 75px;
+        font-size: 15px;
+    }
+    .create_job_menu #submitcreatejob{
+        left: 0px;
+        width: 140px;
+        bottom: 10px;
+    }
+    .create_job_menu #cancel_createjob{
+        right: 10px;
+        width: 140px;
+        bottom: 10px;
+    }
+    #create_job_start_clock, #create_job_end_clock {
+        font-size: 15px;
+        margin-left: 190px;
+    }
+    #create_job_start_daynight, #create_job_end_daynight {
+        font-size: 13px;
+        float: right;
+    }
+
+    .update_job_menu {
+        left: 14%;
+        margin-left: -50px;
+        top: 10%;
+        width: 368px;
+        height: 450px;
+    }
+    .update_job_menu #updatejob-title {
+        margin-right: 50px;
+    }
+    .update_job_menu #update_job_title, .update_job_menu #update_job_desc, .update_job_menu #update_job_price {
+        float: left;
+        width: 340px;
+        margin-top: 5px;
+    }
+    .update_job_menu #update_job_address {
+        width: 270px;
+        height: 50px;
+        margin-top: 5px;
+        margin-right: 20px;
+    }
+    .create_job_menu #update_job_retrieve_address {
+        float: right;
+        margin-top: 5px;
+    }
+    .update_job_menu #update_job_price {
+        float: right;
+        margin-top: 5px;
+        /* margin-right: 20px; */
+        width: 150px;
+    }
+    .update_job_menu #updatejobtype {
+        position: absolute;
+        left: -5px;
+        margin-top: -30px;
+        /* margin-right: 0px; */
+        width: 180px;
+    }
+    .update_job_menu #update_job_expired_start, .update_job_menu #update_job_expired_end {
+        margin-top: 5px;
+        width: 300px;
+    }
+    .update_job_menu #submitupdatejob, .update_job_menu #cancel_updatejob {
+        margin-top: 25px;
+        margin-left: 20px;
+    }
+    .update_job_menu #cancel_updatejob{
+        margin-left: 120px;
+    }
+    .mapTools {
+        position: fixed;
+        width: 97%;
+        height: 91%;
+        top: 7%;
+        left: 5px;
+        background-color: rgb(235, 235, 235);
+        border-radius: 5px;
+        box-shadow: 1px 15px 20px 5px #101820;
+        z-index: 10;
+    }
+    #map {
+        width: auto;
+        height: 250px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        margin-top: 60px;
+    }
+    .popup {
+        top: 20%;
+        left: 10%;
+        height: 300px;
+        width: 200px;
+    }
+}
+
+@media only screen and (max-width:360px) {    
+    .Messanger {
+        position: fixed;
+        left: 17%;
+        margin-left: -50px;
+        background-color: #f5f6fa;
+        top: 2%;
+        width: 340px;
+        height: 500px;
+        border-radius: 5px;
+        box-shadow: 1px 15px 20px 5px #101820;
+        z-index: 20;
+    }
+
+    .Messanger #messagePopulate {
+        margin: 10px;
+        padding-top: 5px;
+        background-color: #353b48;
+        height: 365px;
+        overflow-y:scroll;
+        display:block;
+        border-radius: 5px;
+    }
+    
+    .Messanger #YourMessageHere {
+        position: absolute;
+        bottom: 5px;
+        width: 74%;
+        left: 10px;
+        border-style: groove;
+        height: 60px;
+        resize: none;
+        font-size: 15px;
+        border-radius: 5px;
+        padding: 5px;
+        background-color: #353b48;
+        color: #f5f6fa;
+    }
+
+    #mapRefresh{
+        position: absolute;
+        right: 0px;
+        top: 290px;
+        padding: 1px 10px 1px 10px;
+        border: none;
+        background-color: #101820;
+        color: white;
+    }
+
+    .signupMenu .signup{
+        left: 26%;
+        margin-left: -50px;
+        top: 15%;
+        width: 270px;
+        height: 470px;
+    }
+
+    .loginMenu .login {
+        left: 26%;
+        margin-left: -50px;
+        top: 30%;
+        width: 270px;
+        height: 270px;
+    }
+
+    .Logout_Menu .logout{
+        position: fixed;
+        left: 23%;
+        margin-left: -50px;
+        /* margin: 0 auto; */
+        top: 35%;
+    }
+
+    .Profile_Update_Menu {
+        position: fixed;
+        left: 25%;
+        /* margin: 0 auto; */
+        top: 10%;
+    }
+
+    .create_job_menu {
+        left: 16%;
+        /* margin-left: -50px; */
+        top: 10%;
+        width: 345px;
+        height: 530px;
+    }
+    .create_job_menu #create_job_title, .create_job_menu #create_job_desc, .create_job_menu #create_job_price, .create_job_menu #jobtype {
+        float: left;
+        width: 317px;
+        margin-top: 5px;
+    }
+    .create_job_menu #create_job_address {
+        width: 250px;
+        margin-top: 5px;
+    }
+    .create_job_menu #create_job_retrieve_address {
+        float: right;
+        margin-top: 5px;
+        /* margin-right: 5px; */
+    }
+    .create_job_menu #jobtype {
+        margin-left: 7px;
+        width: 327px;
+    }
+    .create_job_menu #create_job_expired_start, .create_job_menu #create_job_expired_end {
+        position: absolute;
+        width: 47%;
+        left: 0;
+        margin-top: 15px;
+        font-size: 15px;
+    }
+    .create_job_menu #submitcreatejob, .create_job_menu #cancel_createjob {
+        position: absolute;
+        bottom: 0;
+        width: 75px;
+        font-size: 15px;
+    }
+    .create_job_menu #submitcreatejob{
+        left: 0px;
+        bottom: 10px;
+        width: 150px;
+    }
+    .create_job_menu #cancel_createjob{
+        right: 10px;
+        bottom: 10px;
+        width: 150px;
+    }
+    #create_job_start_clock, #create_job_end_clock {
+        font-size: 15px;
+        margin-left: 180px;
+    }
+    #create_job_start_daynight, #create_job_end_daynight {
+        font-size: 13px;
+        float: right;
+    }
+    
+    .update_job_menu {
+        left: 15%;
+        margin-left: -50px;
+        top: 10%;
+        width: 352px;
+        height: 450px;
+    }
+    .update_job_menu #updatejob-title {
+        margin-right: 50px;
+    }
+    .update_job_menu #update_job_title, .update_job_menu #update_job_desc, .update_job_menu #update_job_price {
+        float: left;
+        width: 320px;
+        margin-top: 5px;
+    }
+    .update_job_menu #update_job_address {
+        width: 250px;
+        height: 50px;
+        margin-top: 5px;
+        /* margin-right: 10px; */
+    }
+    .create_job_menu #update_job_retrieve_address {
+        float: right;
+        margin-top: 5px;
+    }
+    .update_job_menu #update_job_price {
+        float: right;
+        margin-top: 5px;
+        /* margin-right: 20px; */
+        width: 150px;
+    }
+    .update_job_menu #updatejobtype {
+        position: absolute;
+        left: -5px;
+        margin-top: -30px;
+        /* margin-right: 0px; */
+        width: 150px;
+    }
+    .update_job_menu #update_job_expired_start, .update_job_menu #update_job_expired_end {
+        margin-top: 5px;
+        width: 280px;
+    }
+    .update_job_menu #submitupdatejob, .update_job_menu #cancel_updatejob {
+        margin-top: 25px;
+        margin-left: 20px;
+    }
+    .update_job_menu #cancel_updatejob{
+        margin-left: 110px;
+    }
+    .mapTools {
+        position: fixed;
+        width: 98%;
+        height: 98%;
+        top: 1%;
+        /* left: 20px; */
+        right: 1px;
+        background-color: rgb(235, 235, 235);
+        border-radius: 5px;
+        box-shadow: 1px 15px 20px 5px #101820;
+        z-index: 10;
+    }
+    #map {
+        width: auto;
+        height: 250px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        margin-top: 60px;
+    }
+    .popup {
+        top: 20%;
+        left: 9%;
+        height: 300px;
+        width: 200px;
+    }
+}
+
+@media only screen and (max-width:320px) {    
+    .Messanger {
+        position: fixed;
+        left: 17%;
+        margin-left: -50px;
+        background-color: #f5f6fa;
+        top: 1%;
+        width: 312px;
+        height: 560px;
+        border-radius: 5px;
+        box-shadow: 1px 15px 20px 5px #101820;
+        z-index: 20;
+    }
+
+    .Messanger #messagePopulate {
+        margin: 10px;
+        padding-top: 5px;
+        background-color: #353b48;
+        height: 430px;
+        overflow-y:scroll;
+        display:block;
+        border-radius: 5px;
+    }
+    
+    .Messanger #YourMessageHere {
+        position: absolute;
+        bottom: 5px;
+        width: 70%;
+        left: 10px;
+        border-style: groove;
+        height: 60px;
+        resize: none;
+        font-size: 15px;
+        border-radius: 5px;
+        padding: 5px;
+        background-color: #353b48;
+        color: #f5f6fa;
+    }
+
+    #mapRefresh{
+        position: absolute;
+        right: 0px;
+        top: 240px;
+        padding: 1px 10px 1px 10px;
+        border: none;
+        background-color: #101820;
+        color: white;
+    }
+
+    .signupMenu .signup{
+        left: 23%;
+        margin-left: -50px;
+        top: 10%;
+        width: 270px;
+        height: 470px;
+    }
+
+    .loginMenu .login {
+        left: 23%;
+        margin-left: -50px;
+        top: 30%;
+        width: 270px;
+        height: 270px;
+    }
+
+    .Logout_Menu .logout{
+        position: fixed;
+        left: 20%;
+        margin-left: -50px;
+        /* margin: 0 auto; */
+        top: 35%;
+    }
+
+    .Profile_Update_Menu {
+        position: fixed;
+        left: 23%;
+        margin-left: -50px;
+        /* margin: 0 auto; */
+        top: 5%;
+    }
+
+    .create_job_menu {
+        left: 17.5%;
+        /* margin-left: -50px; */
+        top: 4%;
+        width: 310px;
+    }
+    .create_job_menu #create_job_title, .create_job_menu #create_job_desc, .create_job_menu #create_job_price, .create_job_menu #jobtype {
+        float: left;
+        width: 280px;
+        margin-top: 5px;
+    }
+    .create_job_menu #create_job_address {
+        width: 220px;
+        margin-top: 5px;
+    }
+    .create_job_menu #create_job_retrieve_address {
+        float: right;
+        margin-top: 5px;
+    }
+    .create_job_menu #jobtype {
+        margin-left: 7px;
+        width: 290px;
+    }
+    .create_job_menu #create_job_expired_start, .create_job_menu #create_job_expired_end {
+        position: absolute;
+        width: 40%;
+        left: 0;
+        font-size: 15px;
+    }
+    .create_job_menu #submitcreatejob, .create_job_menu #cancel_createjob {
+        position: absolute;
+        bottom: 0;
+        width: 75px;
+        font-size: 12px;
+    }
+    .create_job_menu #submitcreatejob{
+        left: 0px;
+        width: 140px;
+        bottom: 10px;
+    }
+    .create_job_menu #cancel_createjob{
+        right: 10px;
+        width: 140px;
+        bottom: 10px;
+    }
+    #create_job_start_clock, #create_job_end_clock {
+        font-size: 15px;
+        margin-left: 140px;
+    }
+    #create_job_start_daynight, #create_job_end_daynight {
+        font-size: 13px;
+        float: right;
+    }
+    
+    .update_job_menu {
+        left: 17%;
+        margin-left: -50px;
+        top: 10%;
+        width: 310px;
+    }
+    .update_job_menu #updatejob-title {
+        margin-right: 50px;
+    }
+    .update_job_menu #update_job_title, .update_job_menu #update_job_desc, .update_job_menu #update_job_price {
+        float: left;
+        width: 280px;
+        margin-top: 5px;
+    }
+    .update_job_menu #update_job_address {
+        width: 215px;
+        height: 50px;
+        margin-top: 5px;
+        /* margin-right: 10px; */
+    }
+    .create_job_menu #update_job_retrieve_address {
+        float: right;
+        margin-top: 5px;
+    }
+    .update_job_menu #update_job_price {
+        float: right;
+        margin-top: 5px;
+        /* margin-right: 20px; */
+        width: 140px;
+    }
+    .update_job_menu #updatejobtype {
+        position: absolute;
+        left: -5px;
+        margin-top: -30px;
+        /* margin-right: 0px; */
+        width: 140px;
+    }
+    .update_job_menu #update_job_expired_start, .update_job_menu #update_job_expired_end {
+        margin-top: 5px;
+        width: 240px;
+    }
+    .update_job_menu #submitupdatejob, .update_job_menu #cancel_updatejob {
+        margin-top: 25px;
+        margin-left: 20px;
+    }
+    .update_job_menu #cancel_updatejob{
+        margin-left: 60px;
+    }
+    .mapTools {
+        position: fixed;
+        width: 98%;
+        height: 98%;
+        top: 1%;
+        left:3px;
+        background-color: rgb(235, 235, 235);
+        border-radius: 5px;
+        box-shadow: 1px 15px 20px 5px #101820;
+        z-index: 10;
+    }
+    #map {
+        width: auto;
+        height: 200px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        margin-top: 60px;
+    }
+    .popup {
+        top: 15%;
+        left: 3%;
+        height: 300px;
+        width: 200px;
+    }
+}
